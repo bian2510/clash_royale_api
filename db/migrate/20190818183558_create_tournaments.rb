@@ -8,6 +8,7 @@ class CreateTournaments < ActiveRecord::Migration[6.0]
       t.string :unbeaten
       t.integer :players
       t.integer :rounds
+      # The value of time_per_round is in minutes
       t.integer :time_per_round
 
       t.timestamps
