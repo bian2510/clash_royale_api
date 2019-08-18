@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::API
   def index
-    render json: {all: "ok"}, status: :ok
+    render json: {tournament: Tournament.first}, status: :ok
   end
 end
