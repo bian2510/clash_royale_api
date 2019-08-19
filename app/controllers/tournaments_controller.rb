@@ -12,10 +12,10 @@ class TournamentsController < ApplicationController
   def normalize_clan_tag
     clan_tag_up_case = params[:id].upcase
     normalize_clan_tag = clan_tag_up_case.gsub('*', '') if clan_tag_up_case.include? '*'
-    normalize_clan_tag = clan_tag_upcase
+    normalize_clan_tag = clan_tag_up_case
   end
 
-  def tournaments_params
-    params.require(:tournament).permit!(:clan_tag, :limit_time)
+  def tournaments_params(params)
+    params.require(:tournament).permit!(:clan_tag, :limit_time, :players, :rounds)
   end
 end
