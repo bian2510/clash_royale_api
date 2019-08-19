@@ -52,7 +52,7 @@ rails -v
 ### Run this commands
 
 ```
-sudo apt install postgresql-11 libpq-dev
+sudo apt install postgresql-10 libpq-dev
 # change chris for you username
 sudo -u postgres createuser chris -s
 # If you would like to set a password for the user, you can do the following
