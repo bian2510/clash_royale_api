@@ -8,3 +8,6 @@
     Tournament.create(clan_tag: '#VP08QJV', first_place: '#2C9VJYL9',
                       second_place: '#288GP2PU8', best_streak: '#2C9VJYL9',
                       unbeaten: '#2C9VJYL9', players: 2, rounds: 1)
+    Tournament.create(clan_tag: '#VP08QJV', first_place: '#288GP2PU8',
+                      second_place: '#2C9VJYL9', best_streak: '#288GP2PU8',
+                      unbeaten: '#288GP2PU8', players: 2, rounds: 1)
