@@ -19,10 +19,23 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def update
+    tournament = Tournament.where(clan_tag: "##{params[:id]}").last
+    if tournament.update(tournaments_params_update)
+      render json: tournament, status: :ok
+    else
+      render json: {error: "the tournament can't be edited"}, status: :not_acceptable
+    end
+  end
+
   private
 
   def tournaments_params_create
     params.require(:tournament).permit(:clan_tag, :time_per_round, :players, :rounds)
+  end
+
+  def tournaments_params_update
+    params.require(:tournament).permit(:first_place, :second_place, :best_streak, :unbeaten)
   end
 end
 
