@@ -22,13 +22,12 @@ class TournamentsController < ApplicationController
   private
 
   def validate_clan_exist
-    token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjM4MGI4MTg2LWZhMzgtNDkwZC05ZDk1LTEzODk5ZTkyZjkyMCIsImlhdCI6MTU2NjY3NzExNiwic3ViIjoiZGV2ZWxvcGVyL2ZlM2VmMzYzLTBmNmYtZGE4NS0yNmE0LTIxZTk3M2E5NjQ4ZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyI1NC4yMTAuMzUuMTI1Il0sInR5cGUiOiJjbGllbnQifV19.Gyt3RoIcuXoTUiEwIk5DBJsVJAbfz_3ZY0WJ8rLKuqogLeehHS1htL7fd8pbefPil-y9ocMnsMin-UjrzSJLeg"
+    token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6Ijg2MDM3MGIxLTdmNmMtNDhhYS1hNTY5LTFkYzBmZDNlMDNjMiIsImlhdCI6MTU2NjMyNzU0NCwic3ViIjoiZGV2ZWxvcGVyL2ZlM2VmMzYzLTBmNmYtZGE4NS0yNmE0LTIxZTk3M2E5NjQ4ZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxODYuMTM5LjEwMy4xNTkiXSwidHlwZSI6ImNsaWVudCJ9XX0._zFDF4yRKar-ldxwtjI7jPaiUdgEO59-WduuzqqxqRX_l2FrhoQGknXnomCirvBmhGe-RtsiJtMCUegBFLlfqw"
     clan_tag = tournaments_params[:clan_tag]
     url = BuilderUrl.new.get_clan(clan_tag)
     response = HTTParty.get(url, :headers => {"Authorization" => token})
-    return render json: response
-    #return render json: {error: "#{response.code}"}, status: :not_found if response.code != 200
-    #JSON.parse(response.body) if response.code == 200
+    return render json: {error: "#{response.code}"}, status: :not_found if response.code != 200
+    JSON.parse(response.body) if response.code == 200
   end
 
   def tournaments_params
