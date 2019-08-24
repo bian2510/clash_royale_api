@@ -26,8 +26,9 @@ class TournamentsController < ApplicationController
     clan_tag = tournaments_params[:clan_tag]
     url = BuilderUrl.new.get_clan(clan_tag)
     response = HTTParty.get(url, :headers => {"Authorization" => token})
-    return render json: {error: "Not found clan"}, status: :not_found if response.code == 404
-    JSON.parse(response.body) if response.code == 200
+    return render json: response
+    #return render json: {error: "#{response.code}"}, status: :not_found if response.code != 200
+    #JSON.parse(response.body) if response.code == 200
   end
 
   def tournaments_params
