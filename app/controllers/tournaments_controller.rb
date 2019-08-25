@@ -19,11 +19,19 @@ class TournamentsController < ApplicationController
   end
 
   def update
+<<<<<<< HEAD
     tournament = Tournament.where(clan_tag: "#{params[:id]}").last
     if tournament.update(tournaments_params_update)
       render json: tournament, status: :ok
     else
       render json: {error: "the tournament can't be edited"}, status: :unprocessable_entity
+=======
+    tournament = Tournament.where(clan_tag: "##{params[:id]}").last
+    if tournament.update(tournaments_params_update)
+      render json: tournament, status: :ok
+    else
+      render json: {error: "the tournament can't be edited"}, status: :not_acceptable
+>>>>>>> 18c8afa7463842f796fbeb50c5973e29bf067c6d
     end
   end
 
