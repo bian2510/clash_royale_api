@@ -1,11 +1,12 @@
 class TournamentsController < ApplicationController
   before_action :validation_for_create_tournaments, only: [:create]
+  before_action :validation_for_update_tournaments, only: [:update]
   def index
     render json: Tournament.all
   end
   
   def show
-    render json: Tournament.where(clan_tag: "##{params[:id]}")
+    render json: Tournament.where(clan_tag: "#{params[:id]}")
   end
 
   def create
@@ -13,9 +14,24 @@ class TournamentsController < ApplicationController
     if tournament.save
       render json: tournament, status: :created
     else
-      # This line overrides the default rendering behavior, which
-      # would have been to render the "create" view.
       render json: {error: "the tournament can't be created"}, status: :unprocessable_entity
+    end
+  end
+
+  def update
+<<<<<<< HEAD
+    tournament = Tournament.where(clan_tag: "#{params[:id]}").last
+    if tournament.update(tournaments_params_update)
+      render json: tournament, status: :ok
+    else
+      render json: {error: "the tournament can't be edited"}, status: :unprocessable_entity
+=======
+    tournament = Tournament.where(clan_tag: "##{params[:id]}").last
+    if tournament.update(tournaments_params_update)
+      render json: tournament, status: :ok
+    else
+      render json: {error: "the tournament can't be edited"}, status: :not_acceptable
+>>>>>>> 18c8afa7463842f796fbeb50c5973e29bf067c6d
     end
   end
 
@@ -23,6 +39,10 @@ class TournamentsController < ApplicationController
 
   def tournaments_params_create
     params.require(:tournament).permit(:clan_tag, :time_per_round, :players, :rounds)
+  end
+
+  def tournaments_params_update
+    params.require(:tournament).permit(:first_place, :second_place, :best_streak, :unbeaten)
   end
 end
 
