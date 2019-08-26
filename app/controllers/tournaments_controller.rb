@@ -2,7 +2,8 @@ class TournamentsController < ApplicationController
   before_action :validation_for_create_tournaments, only: [:create]
   before_action :validation_for_update_tournaments, only: [:update]
   def index
-    render json: Tournament.all
+    #render json: Tournament.all
+    render json: {ENVAR: ENV["API_KEY_SUPERCELL"]}
   end
   
   def show
