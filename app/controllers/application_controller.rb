@@ -16,9 +16,7 @@ class ApplicationController < ActionController::API
   private
 
   def validate_clan_exist(clan_tag)
-    token = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiIsImtpZCI6IjI4YTMxOGY3LTAwMDAtYTFlYi03ZmExLTJjNzQzM2M2Y2NhNSJ9.eyJpc3MiOiJzdXBlcmNlbGwiLCJhdWQiOiJzdXBlcmNlbGw6Z2FtZWFwaSIsImp0aSI6IjQ5YWEwYzc3LTEyNzctNDRhZS05NmIyLTUwYzUyODE2MzIxMSIsImlhdCI6MTU2NjY4MzY2Miwic3ViIjoiZGV2ZWxvcGVyL2ZlM2VmMzYzLTBmNmYtZGE4NS0yNmE0LTIxZTk3M2E5NjQ4ZiIsInNjb3BlcyI6WyJyb3lhbGUiXSwibGltaXRzIjpbeyJ0aWVyIjoiZGV2ZWxvcGVyL3NpbHZlciIsInR5cGUiOiJ0aHJvdHRsaW5nIn0seyJjaWRycyI6WyIxODEuNDYuMTM5LjExIl0sInR5cGUiOiJjbGllbnQifV19.pG34mGm1QwG8ZLb1LEkWSr4d7PzukJH7XQFiQhmSyb4ylAxHvMVab_HdwRr7CpI6sNOsssVVJDjVYUNXSIntog"
-    url = BuilderUrl.new.get_clan(clan_tag)
-    response = HTTParty.get(url, :headers => {"Authorization" => token})
+    response = HTTParty.get(Builder.new.url_get_clan(clan_tag), headers: Builder.new.headers)
     return render json: {error: "#{response.code}"}, status: :not_found if response.code != 200
     JSON.parse(response.body)
   end
