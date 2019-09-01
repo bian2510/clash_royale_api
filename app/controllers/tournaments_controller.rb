@@ -27,6 +27,11 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def destroy
+    tournament = Tournament.find(params[:id])
+    tournament.destroy
+  end
+
   private
 
   def tournaments_params_create
