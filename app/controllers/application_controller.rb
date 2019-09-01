@@ -17,20 +17,20 @@ class ApplicationController < ActionController::API
 
   def validate_clan_exist(clan_tag)
     response = HTTParty.get(Builder.new.url_get_clan(clan_tag), headers: Builder.new.headers)
-    return render json: {error: "#{response.code}"}, status: :not_found if response.code != 200
+    render json: {error: "#{response.code}"}, status: :not_found if response.code != 200
     JSON.parse(response.body)
   end
 
   def validates_params(params_method, keys_expected)
     unless keys_expected.size == params_method.size
-      return render json: {error: "bad_request"}, status: :bad_request
+      render json: {error: "bad_request"}, status: :bad_request
     end
     validate_each_param(params_method, keys_expected)
   end
 
   def validate_each_param(parameters, keys)
     parameters.each do |key, value|
-      return render json: {error: "bad_request"}, status: :bad_request unless keys.include?(key)
+      render json: {error: "bad_request"}, status: :bad_request unless keys.include?(key)
     end
   end
 end
