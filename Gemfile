@@ -23,9 +23,12 @@ gem 'httparty', '~> 0.17.0'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
-
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
+# JWT for user authentication
+gem 'devise-jwt'
+# Devise authentication solution for Rails based on Warden
+gem 'devise'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
