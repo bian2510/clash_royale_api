@@ -5,9 +5,9 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-    Tournament.create(clan_tag: '#VP08QJV', first_place: '#2C9VJYL9',
-                      second_place: '#288GP2PU8', best_streak: '#2C9VJYL9',
-                      unbeaten: '#2C9VJYL9', players: 2, rounds: 1, time_per_round: 20)
-    Tournament.create(clan_tag: '#VP08QJV', first_place: '#288GP2PU8',
-                      second_place: '#2C9VJYL9', best_streak: '#288GP2PU8',
-                      unbeaten: '#288GP2PU8', players: 2, rounds: 1, time_per_round: 15)
+    Tournament.create(clan_tag: 'VP08QJV', first_place: 'bian',
+                      second_place: 'pedro', best_streak: 'bian',
+                      unbeaten: 'bian', players: 2, rounds: 1, time_per_round: 20)
+    Tournament.create(clan_tag: 'VP08QJV', first_place: 'pedro',
+                      second_place: 'bian', best_streak: 'pedro',
+                      unbeaten: 'pedro', players: 2, rounds: 1, time_per_round: 15)
