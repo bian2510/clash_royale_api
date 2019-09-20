@@ -23,7 +23,7 @@ class ApplicationController < ActionController::API
     if response.code != 200
       render json: { error: response.code.to_s }, status: :not_found
     end
-    return unless response.code != 200
+    true
   end
 
   def validates_params(params_method, keys_expected)
