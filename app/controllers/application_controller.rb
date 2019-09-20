@@ -17,8 +17,9 @@ class ApplicationController < ActionController::API
 
   def validate_clan_exist(clan_tag)
     builder = Builder.new
-    response = ClashRoyaleRequester.get(builder.url_get_clan(clan_tag),
-                                        builder.headers)
+    url = builder.url_get_clan(clan_tag)
+    headers = builder.headers
+    response = ClashRoyaleRequester.get(url, headers)
     if response.code != 200
       render json: { error: response.code.to_s }, status: :not_found
     end
