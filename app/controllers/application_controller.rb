@@ -19,10 +19,11 @@ class ApplicationController < ActionController::API
     builder = Builder.new
     url = builder.url_get_clan(clan_tag)
     headers = builder.headers
-    response = ClashRoyaleRequester.get(url, headers)
+    response = ClashRoyaleRequester.new.get(url, headers)
     if response.code != 200
       render json: { error: response.code.to_s }, status: :not_found
     end
+    return unless response.code != 200
   end
 
   def validates_params(params_method, keys_expected)
