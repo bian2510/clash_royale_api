@@ -21,7 +21,7 @@ class ApplicationController < ActionController::API
     headers = builder.headers
     response = ClashRoyaleRequester.new.get(url, headers)
     if response.code != 200
-      render json: { error: response.code.to_s }, status: :not_found
+      render json: { error: response }, status: :not_found
     end
     true
   end
