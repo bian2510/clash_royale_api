@@ -53,8 +53,10 @@ class TournamentsController < ApplicationController
   def create_players(players_params_create)
     players = []
     players_params_create.each do |player|
-      player = create_player(player)
-      players.push(player)
+      if Player.find_by(tag: player[:tag]) == nil
+        player = create_player(player)
+        players.push(player)            
+      end
     end
     players
   end
