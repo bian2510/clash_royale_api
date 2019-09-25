@@ -12,7 +12,6 @@ class TournamentsController < ApplicationController
   def create
     tournament = Tournament.new(tournaments_params_create)
     tournament.players << create_players(players_params_create)
-    byebug
     if tournament.save
       render json: tournament, status: :created
     else
