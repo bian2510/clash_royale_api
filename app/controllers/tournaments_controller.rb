@@ -27,6 +27,14 @@ class TournamentsController < ApplicationController
     end
   end
 
+  def get_clan_for_create_tournament
+    builder = Builder.new
+    url = builder.url_get_clan(params[:id])
+    headers = builder.headers
+    response = ClashRoyaleRequester.new.get_clan(url, headers)
+    render json: response
+  end
+
   private
 
   def tournaments_params_create
