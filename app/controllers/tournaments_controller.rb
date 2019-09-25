@@ -11,6 +11,8 @@ class TournamentsController < ApplicationController
 
   def create
     tournament = Tournament.new(tournaments_params_create)
+    tournament.players << create_players(players_params_create)
+    byebug
     if tournament.save
       render json: tournament, status: :created
     else
@@ -38,11 +40,33 @@ class TournamentsController < ApplicationController
   private
 
   def tournaments_params_create
-    params.require(:tournament).permit(:clan_tag, :time_per_round, :players, :rounds)
+    params.require(:tournament).permit(:clan_tag, :time_per_round, :rounds)
+  end
+
+  def players_params_create
+    params[:players]
   end
 
   def tournaments_params_update
     params.require(:tournament).permit(:first_place, :second_place, :best_streak, :unbeaten)
+  end
+
+  def create_players(players_params_create)
+    players = []
+    players_params_create.each do |player|
+      player = create_player(player)
+      players.push(player)
+    end
+    players
+  end
+
+  def create_player(player_params)
+    player = Player.new(name: player_params[:name], tag: player_params[:tag], champion: player_params[:champion], unbeaten: player_params[:unbeaten])
+    if player.save
+      player
+    else
+      render json: {error: "the player can't be created"}, status: :unprocessable_entity
+    end
   end
 end
 
