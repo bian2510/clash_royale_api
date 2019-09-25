@@ -19,9 +19,9 @@ class ApplicationController < ActionController::API
     builder = Builder.new
     url = builder.url_get_clan(clan_tag)
     headers = builder.headers
-    response = ClashRoyaleRequester.new.get(url, headers)
+    response = ClashRoyaleRequester.new.get_clan(url, headers)
     if response.code != 200
-      render json: { error: response, env: ENV["API_KEY_SUPERCELL"] }, status: :not_found
+      render json: { status_code: response.code }, status: :not_found
     end
     true
   end

@@ -1,5 +1,5 @@
 class ClashRoyaleRequester
-  def get(url, headers)
+  def get_clan(url, headers)
     HTTParty.get(url, headers: headers)
   end
 end
