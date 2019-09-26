@@ -27,7 +27,7 @@ class TournamentsController < ApplicationController
     end
   end
 
-  def get_clan_for_create_tournament
+  def get_clan
     builder = Builder.new
     url = builder.url_get_clan(params[:id])
     headers = builder.headers
