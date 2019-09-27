@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root "tournaments#index"
 
   resources :tournaments
+  get '/get_clan/:id', to: 'tournaments#get_clan'
 end
