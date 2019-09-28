@@ -11,3 +11,4 @@
     Tournament.create(clan_tag: 'VP08QJV', first_place: '288GP2PU8',
                       second_place: '2C9VJYL9', best_streak: '288GP2PU8',
                       unbeaten: '#288GP2PU8', rounds: 1, time_per_round: 15)
+    Player.create(name: 'BianLikibu', tag: '2C9VJYL9', champion: true, unbeaten: true)
