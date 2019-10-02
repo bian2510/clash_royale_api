@@ -11,7 +11,7 @@ class TournamentsController < ApplicationController
 
   def create
     tournament = Tournament.new(tournaments_params_create)
-    tournament.players << Player.new.create_players(players_params_create)
+    tournament.players << Player.new.create_players(params[:players])
     if tournament.save
       render json: tournament, status: :created
     else
@@ -40,10 +40,6 @@ class TournamentsController < ApplicationController
 
   def tournaments_params_create
     params.require(:tournament).permit(:clan_tag, :time_per_round, :rounds)
-  end
-
-  def players_params_create
-    params[:players]
   end
 
   def tournaments_params_update
