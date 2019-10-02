@@ -4,7 +4,7 @@ class TournamentsController < ApplicationController
   def index
     render json: Tournament.all
   end
-  
+
   def show
     render json: Tournament.where(clan_tag: "#{params[:id]}")
   end
