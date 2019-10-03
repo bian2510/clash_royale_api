@@ -6,8 +6,6 @@ class CreateTournaments < ActiveRecord::Migration[6.0]
       t.string :second_place
       t.string :best_streak
       t.string :unbeaten
-      t.integer :players
-      t.integer :rounds
       # The value of time_per_round is in minutes
       t.integer :time_per_round
 
