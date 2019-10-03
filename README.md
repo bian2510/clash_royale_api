@@ -63,7 +63,7 @@ postgres=# \password chris
 
 ## Create API_KEY_SUPERCELL
 Create the KEY in `https://developer.clashroyale.com/#/`
-export the env var `API_KEY_SUPERCELL` with the value of the `TOKEN`
+after export the env var `API_KEY_SUPERCELL` with the value of the `TOKEN`
 
 `export API_KEY_SUPERCELL=tokenvalue`
 
