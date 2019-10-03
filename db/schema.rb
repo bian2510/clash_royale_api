@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2019_09_23_231547) do
     t.string "second_place"
     t.string "best_streak"
     t.string "unbeaten"
-    t.integer "rounds"
     t.integer "time_per_round"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
