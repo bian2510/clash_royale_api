@@ -1,4 +1,5 @@
 class TournamentsController < ApplicationController
+  include Validation
   before_action :validation_for_create_tournaments, only: [:create]
   before_action :validation_for_update_tournaments, only: [:update]
   def index
